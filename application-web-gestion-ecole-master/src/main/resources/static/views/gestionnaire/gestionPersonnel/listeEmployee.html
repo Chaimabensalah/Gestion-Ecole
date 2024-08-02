@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						 
+
+						 <li >
+							<a  ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="listeEmployee">
+							<i class="glyphicon glyphicon-stats"></i>
+							liste de personnel </a>
+						</li>
+
+						<li >
+							<a ui-sref="ajouterEmployee">
+							<i class="glyphicon glyphicon-user"></i>
+							ajouter un employee </a>
+						</li>
+ 
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+<div id="exportthis">
+		<div class="col-md-9" style="background-color: white">
+		  <h3 class="well" s>Liste des employees</h3>
+		
+                       <label>type d'employee</label>
+						<select  ng-model="emp.type" ng-change="getEmployeeParType()" id="type" name="typeE" class="form-control">
+						<option value="" label="--- Selectionner le type demployee ---"/>
+						<option value="professeurs" label="Professeur"/>
+						<option value="directeurs" label="Directeur"/>
+						<option value="gardiens" label="Gardien"/>
+						<option value="femmeDeMenages" label="Menage"/>
+						<option value="chauffeurs" label="Chauffeur"/>
+						<option value="secretaires" label="Secretaire"/>
+						<option value="gestionnaires" label="Gestionnaire"/>
+						<option value="aides" label="Aide"/>
+						</select>
+						
+						
+	       
+      
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						
+							<th>Nom complet</th>
+							<th>email</th>
+							<th>telephone</th>
+							<th>cin</th>
+							<th>date de naissance</th>
+							<th>date debut de travail</th>
+							<th>la fiche complete</th>
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="e in employees" >
+						   	
+								<td>{{e.nom}} {{e.prenom}}</td>
+								<td>{{e.email}}</td>
+								<td>{{e.telephone}}</td>
+								<td>{{e.cin}}</td>
+								<td>{{e.dateDeNaissance}}
+								<td>{{e.dateDebutTravail}}</td>
+							<!--	<td><button  ng-click="getEmp(e._links.self.href)"   type="button" class="btn btn-info">Voir<i class="glyphicon glyphicon-eye-open"></i><button>	</td>
+							<!--    <td><a       ng-click="getEmp(e._links.self.href)" data-original-title="voir la fiche de l'employee" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-eye-open"></i></a> </td>
+					      -->   
+					           <td><a ui-sref='ficheEmployee' ng-click='getEmp(e.idPersonne)'>voir</a></td>
+								 	
+					        </tr>
+					</tbody>
+				</table>
+				</div>
+				
+	 
+		</div>		    	 	     
+</div></div>	
+ 
+
+</body>
+</html>
+ 

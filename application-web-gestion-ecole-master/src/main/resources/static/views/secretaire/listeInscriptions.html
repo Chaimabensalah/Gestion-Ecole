@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title></title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body ng-app="ecole" >
+<!-- <script type="text/javascript" src="../node_modules/angular/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../js/app.js"></script> -->
+<!-- <script src="../node_modules/angular-utils-pagination/dirPagination.js"></script> -->
+
+<div id="fb-root"></div>
+
+<div class="container" >
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+<!-- 					<img src="https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/13887011_995565660557110_1567915088465375555_n.jpg?oh=38aec68d920a9d9779500edb6625b7d5&oe=5880FBF1" class="img-responsive" alt=""> -->
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+				     <ul>
+				         
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						
+						<li >
+							<a ui-sref="inscription">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+						
+						<li>
+							<a ui-sref="ajouterService">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+						
+
+						<li >
+							<a ui-sref="fraisScolarite">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais de scolarite </a>
+						</li>
+						
+						<li class="active">
+							<a ui-sref="listeInscriptions">
+							<i class="glyphicon glyphicon-stats"></i>
+							Liste d'inscriptions </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+		<div>
+			
+			
+			
+			<div>
+				<h3 class="well" s>Liste des inscriptions </h3>
+				
+				<br>
+			<div style="float:right;">
+				<i class="fa fa-search"></i> <label for="search">Search : </label>
+				<input type="text" ng-model="search">
+			</div>
+			<br> 
+			
+				<table class="table table-striped">
+
+					    <thead>
+					        <tr style="cursor: pointer;">
+					            <th ng-click="sort('idPersonne')">Nom
+					                <span class="glyphicon sort-icon" ng-show="sortKey=='idPersonne'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+					            </th>
+					            <th ng-click="sort('nom')">Prenom
+					                <span class="glyphicon sort-icon" ng-show="sortKey=='nom'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+					            </th>
+					            <th ng-click="sort('prenom')">Email
+					                <span class="glyphicon sort-icon" ng-show="sortKey=='prenom'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+					            </th>
+					            <th>Date de naissance</th>
+								<th>Niveau</th>
+								<th>Action</th>
+					        </tr>
+					    </thead>
+					   
+						    
+						<tbody>
+							<tr ng-repeat="e in inscriptions">
+								<td>{{e.nom}}</td>
+								<td>{{e.prenom}}</td>
+								<td>{{e.email}}</td>	
+								<td>{{e.dateDeNaissance}}</td>	
+								<td>{{e.niveau.niveau}}</td>
+								 <td> <a ng-click='recupererEleve(e.idPersonne)'  data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a  ng-click="deleteEleve(e.idPersonne,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+					        	
+					        </tr>
+						</tbody>
+
+				</table>
+				 <div ng-if="test">
+				<form name="myForm">
+					<hr>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>Sexe </label> <br>
+									<label class="radio-inline">
+								  	  <input type="radio" name="sexe" value="masculin" id="sexe" ng-model="eleve.sexe" >Masculin
+								    </label>
+								    
+								    <label class="radio-inline">
+								      <input type="radio" name="sexe"  value="masculin" id="sexe" ng-model="eleve.sexe" >Feminin
+								    </label>
+								    
+								</div>
+							</div>
+															
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Nom</label>
+										<input type="text" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" ng-model="eleve.nom">
+									</div>
+									
+									<div class="col-sm-6 form-group">
+										<label>Prénom</label>
+										<input type="text" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom" ng-model="eleve.prenom">
+									</div>
+									
+									<div class="col-sm-6 form-group">
+										<label>Date de naissance</label>
+										<input type="Date" placeholder="Entrer la date de naissance" class="form-control" name="datedenaissance" id="datedenaissance" ng-model="eleve.dateDeNaissance">
+									</div>	
+								</div>	
+
+								<div class="row">
+								
+
+								   <div class="col-sm-4 form-group">
+									 <label>Ville</label>
+									 <input type="text" placeholder="Entrer la ville" class="form-control" name="ville" id="ville" ng-model="eleve.ville">
+								   </div>	
+								   
+								   <div class="col-sm-4 form-group">
+										<label>niveau</label>
+										 <select  ng-model="niveau" ng-options="n.niveau for n in niveaux"   class="form-control">
+		   								 <option value="" label="--Selectionner le niveau--"/>
+										 </select>
+								    </div>		
+								</div>
+
+								<div class="row">
+									<div class="col-sm-4 form-group">
+									    <label>Adresse</label>
+									    <textarea placeholder="Entrer l'Adresse" rows="2" class="form-control" ng-model="eleve.adresse"></textarea>
+								    </div>	
+ 
+									<div class="col-sm-4 form-group">
+										<label>Tel.</label>
+										<input type="Tel" placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel" ng-model="eleve.telephone">
+									</div>		
+							 					
+			  					   <div class="col-sm-4 form-group">
+								       <label>Email</label>
+								       <input type="text" placeholder="Entrer l'adresse Email" class="form-control" name="email" id="email" ng-model="eleve.email">
+							      </div>	
+							 </div>
+							 					
+						 
+						</form> 
+						</div>
+						
+				</div>
+					<div align="center">
+					    <dir-pagination-controls
+					       	max-size="100"
+					       	direction-links="true"
+					       	boundary-links="true" >
+					    </dir-pagination-controls>
+					</div>
+				</div>	
+	</div>
+			
+</div>
+</div>
+
+
+
+
+</body>
+</html>

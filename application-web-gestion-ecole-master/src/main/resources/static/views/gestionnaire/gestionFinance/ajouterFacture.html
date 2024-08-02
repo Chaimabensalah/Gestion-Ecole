@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+     <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<div class="profile-userpic">
+				</div>
+				
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+					
+				</div>
+				
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				
+				<div class="profile-usermenu">
+					<ul class="nav">
+					
+						<li >
+							<a ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+						
+						<li >
+							<a ui-sref="ajouterFournisseur">
+							<i class="glyphicon glyphicon-stats"></i>
+							fournisseurs </a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="ajouterFacture">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							 factures  </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+			</div>	
+
+ 	<div class="col-md-9" style="background-color: white">
+ 	<h3 class="well">les factures</h3>
+ 	<table class="table table-striped">
+					<thead>
+						<tr>
+						    <th>ref</th>
+							<th>date</th>
+							<th>produit</th>
+							<th>nombre de produit</th>
+							<th>prix</th>
+							<th>total</th>
+							 
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="f in facturesList" >
+						   		<td>{{f.idFacture}}</td>
+								<td>{{f.date}}</td>
+								<td>{{f.produit}}</td>
+							    <td>{{f.nombreProduit}}</td>
+							    <td>{{f.prixHT}}</td>
+							    <td>{{f.totalHT}}</td>
+								 <td> <a ng-click='recupererFacture(f.idFacture)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a ui-sref='ajouterFacture' ng-click="deleteFacture(f.idFacture,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+					        
+							 
+					        </tr>
+					        
+					        
+					</tbody>
+				</table>
+		  <h3 class="well" s>ajouter une facture</h3>
+		
+		      <form name="myForm">
+
+ 
+					<div class="row">
+					
+						<div class="col-sm-4 form-group">
+                        <label>fournisseur</label>
+						 <select  ng-model="fournisseur" ng-options="i.nom for i in fournisseurs"   class="form-control">
+						<option value="" label="--Selectionner le fournisseur--"/>
+						</select>
+						</div>
+
+						<div class="col-sm-4 form-group">
+						<label>produit</label>
+						<input type="text" ng-model="facture.produit" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+						
+						 <div class="col-sm-4 form-group">
+						<label>date</label>
+						<input type="date" ng-model="facture.date" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+						
+				 	</div>	
+						
+					<div class="row">
+					
+						<div class="col-sm-6 form-group">
+						<label>nombre de produit</label>
+						<input type="text" ng-model="facture.nombreProduit" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+						
+						<div class="col-sm-6 form-group">
+						<label>prixTH</label>
+						<input type="text" ng-model="facture.prixHT" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						Total:{{total}}
+						</div>
+						
+					</div>
+						
+						
+
+                  <button  ng-click="saveFacture()" type="button" class="btn btn-info pull-right">Valider</button>				
+					 
+			</form> 
+
+		</div>		    	 	     
+</div></div>	
+
+
+
+</body>
+</html>

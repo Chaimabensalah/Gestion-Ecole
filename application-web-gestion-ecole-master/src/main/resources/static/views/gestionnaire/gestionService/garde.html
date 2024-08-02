@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../js/app.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js" ></script>
+<script src="../node_modules/angular/angular.min.js" ></script>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+					 <li >
+							<a ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="garde">
+							<i class="glyphicon glyphicon-stats"></i>
+						     garde</a>
+						</li>
+						
+						<li>
+							<a ui-sref="transport">
+							<i class="glyphicon glyphicon-stats"></i>
+							transport</a>
+						</li>
+						
+						<li >
+							<a ui-sref="vehicules">
+							<i class="glyphicon glyphicon-stats"></i>
+							vehicules</a>
+						</li>
+						
+
+						 
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+					</ul>	 
+
+
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+
+        
+
+
+		  <div class="tab-content" ng-app="ecole">
+		  <h3 class="well" >service de garde</h3>
+		  <table class="table table-striped">
+					<thead>
+						<tr>
+						    <th>ref</th>
+							<th>professeur</th>
+							<th>aide</th>
+							<th>date debut</th>
+							<th>date fin</th>
+							 
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="t in gardesList" >
+						   		<td>{{t.idGarde}}</td>
+								<td>boualil oo</td>
+								<td>hfdjdjd jdjd</td>
+							    <td>{{t.dateDebut}}</td>
+							    <td>{{t.dateFin}}</td>
+								<td> <a ng-click='recupererGarde(t.idGarde)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a ng-click="deleteGarde(t.idGarde,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+					        
+							 
+					        </tr>
+					        
+					        
+					</tbody>
+				</table>
+		    
+		    <h3 class="well" id="titre" >affectation personnel/services</h3>
+			<form name="myForm">
+					<hr>
+					
+					<div class="row">
+									
+					    <div class="col-sm-6 form-group">
+						<label>Professeur</label>
+						<select  ng-model="prof"   ng-options="i.cin for i in professeursList" ng-value="prof.cin" class="form-control">
+						<option value="" label="--Selectionner le matricule du professeur--"/>
+						</select>
+						</div>
+
+						<div class="col-sm-6 form-group">
+						<label>aide</label>
+						<select  ng-model="aide" ng-value="lllll" ng-options="item.nom for item in aidesList"  class="form-control">
+						<option value="" label="-- Selectionner le matricule du stagiaire---"/>
+						</select>
+						</div>	
+
+					</div> 
+	
+					<div class="row">
+					
+					
+						<div class="col-sm-6 form-group">
+						<label>Date debut</label>
+						<input type="datetime-local" ng-model="garde.dateDebut" placeholder="Entrer la date de fin de service" class="form-control"  >
+						</div>
+						
+						<div class="col-sm-6 form-group">
+						<label>Date fin</label>
+						<input type="datetime-local" ng-model="garde.dateFin" ng-value="garde.dateFin"  placeholder="Entrer la date de fin de service" class="form-control"   >
+						</div>
+					</div>	
+	   
+                    <button id="button"  ng-click="saveGarde()"   type="button" class="btn btn-info pull-right">Valider</button>	
+
+		    </form> 
+			</div>
+		    
+		   
+		    </div>
+		    </div>
+		    
+		  </div>
+		
+
+
+
+</body>
+</html>

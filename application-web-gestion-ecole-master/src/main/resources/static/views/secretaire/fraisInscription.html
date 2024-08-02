@@ -1,0 +1,162 @@
+ <!DOCTYPE html>
+<html >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title></title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body ng-app="ecole" >
+<!-- <script type="text/javascript" src="../node_modules/angular/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../js/app.js"></script> -->
+<!-- <script src="../node_modules/angular-utils-pagination/dirPagination.js"></script> -->
+
+<div id="fb-root"></div>
+
+<div class="container" >
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+<!-- 					<img src="https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/13887011_995565660557110_1567915088465375555_n.jpg?oh=38aec68d920a9d9779500edb6625b7d5&oe=5880FBF1" class="img-responsive" alt=""> -->
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+				     <ul>
+				         <li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							My Dash</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						<li>
+							<a ui-sref="listeInscriptions">
+							<i class="glyphicon glyphicon-stats"></i>
+							Liste d'inscriptions </a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="inscription">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+
+						<li >
+							<a ui-sref="fraisScolarite">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais de scolarite </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		 
+		 
+		 <div class="col-md-9" style="background-color: white">
+            <h3 class="well" s>Frais d'inscriptions </h3>
+         
+         
+         <p>Date de paiement
+         <input type="date" name="date" ng-model="paiement.datePaiment" class="form-control" /></p>
+       
+		  <div>
+			 
+			 <p>Montant : {{tarif.montant }}</p>
+			  
+			 <label>Réduction</label>
+		     <select  ng-model="reduction" ng-options="r.typeReduction for r in reductions" ng-change="calculerReduction(r.prctageReduction)"  class="form-control">
+		   	 <option value="" label="--Selectionner la classe--"/>
+			 </select>
+			 <p>motant apres reduction :{{montantApresReduction}}</p>
+				
+		  </div>
+		  
+		  
+		  <label>	mode de paiment</label>
+		  <select id="pays" name="pays" class="form-control" ng-model="paiement.modePaiement" ng-change="getModePaiement()">
+			 <option value="espece" label="espece"/>
+			 <option value="cheque" label="cheque"/>
+			 <option value="virement" label="virment"/>
+		  </select>
+		  <br>
+		  
+		   
+		   <div class="col-sm-4 form-group">
+		 
+		  <div ng-show="paiement.modePaiement === 'cheque'">
+            <p>numero de cheque
+            <input type="text" name="numCheque" ng-model="paiement.numCheque" class="form-control" /></p>
+          </div>
+          
+           <div ng-show="paiement.modePaiement === 'virement'">
+            <p>numero de recu
+            <input type="text" name="numRecu" ng-model="paiement.numRecu" /></p>
+          </div></div>
+		 <button ui-sref="ajouterService" ng-click="savePaiement()"  type="button" class="btn btn-info pull-right">Valider</button>	 
+		 
+		  <br>
+		</div>
+		</div>
+		
+			
+	</div>
+
+
+</body>
+</html>

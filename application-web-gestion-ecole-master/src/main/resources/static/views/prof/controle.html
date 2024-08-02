@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Emploi du temps</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row profile">
+				<div class="col-md-3">
+					<div class="profile-sidebar">
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle">
+							<div align="center">
+								<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+							</div>
+							<div class="profile-usertitle-name">
+								Nom
+							</div>
+							<div class="profile-usertitle-job">
+								Prénom
+							</div>
+						</div>
+						<!-- END SIDEBAR USER TITLE -->
+						<!-- SIDEBAR BUTTONS -->
+						<div class="profile-userbuttons">
+							<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Editer le profil</button>
+							<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Messages</button>
+						</div>
+						<!-- END SIDEBAR BUTTONS -->
+						<!-- SIDEBAR MENU -->
+						<div class="profile-usermenu">
+								<ul class="nav">
+								<li >
+									<a href="profil.html">
+									<i class="glyphicon glyphicon-user"></i>
+									Mon Profil </a>
+								</li>
+								<li>
+									<a href="messages.html">
+									<i class="glyphicon glyphicon-envelope"></i>
+									Messages </a>
+								</li>
+								<li >
+									<a ui-sref="devoirs">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion de Devoirs </a>
+								</li>
+								<li>
+									<a ui-sref="observations">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des observations </a>
+								</li>
+								<li class="active">
+									<a ui-sref="absence">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des absences/retards </a>
+								</li>
+								<li>
+									<a ui-sref="emploisTemps">
+									<i class="glyphicon glyphicon-calendar"></i>
+									Emploi du temps </a>
+								</li>
+								<li>
+									<a ui-sref="cahierText">
+									<i class="glyphicon glyphicon-book"></i>
+									Cahier de texte </a>
+								</li>
+								<li>
+								  <a ui-sref="notes">
+									<i class="glyphicon glyphicon-stats"></i>
+									Consultation de notes </a>
+								</li>
+
+								<li>
+									<a ui-sref="classes">
+									<i class="glyphicon glyphicon-euro"></i>
+									Liste des classes </a>
+								</li>
+								<li >
+									<a ui-sref="controles">
+									<i class="glyphicon glyphicon-time"></i>
+									Planification de controles </a>
+								</li>
+							</ul>
+						</div>
+						<!-- END MENU -->
+					</div>
+				</div>
+			
+			
+				<div class="col-md-9" style="background-color: white">
+					<div ng-app="myApp">
+						 
+							<h3 class="well">controles</h3>
+							
+							 <label>matiere</label>
+							 <select  ng-model="matiere" ng-options="i.nomMatiere for i in matieresList" ng-change="getExamensParMatiere()"  class="form-control">
+							 <option value="" label="--Selectionner la metiere--"/>
+							 </select>
+							
+							<table class="table table-striped">
+					<thead>
+						<tr>
+							 
+							<th>examen num</th>
+							<th>La matiere</th>
+							<th>La classe</th>
+							<th>La duree</th>
+							<th>Date</th>
+							<th>validation</th>
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="exam in examensList" >
+						   		
+								<td>{{exam.numExamen}}</td>
+								<td>{{exam.matiere.nomMatiere}}</td>
+								<td>{{exam.classe.nomClasse}}</td>
+								<td>{{exam.duree}}</td>
+								<td>{{exam.date}}</td>
+								<td>{{exam.valide}}</td>
+                                <td><a  ng-click='recupererExamen(exam.idExamen)'>modifier</a></td>
+						     	<td> <a ng-click='recupererExamen(exam.idExamen)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>mo</a>
+                                <td><a ui-sref='controle' ng-click="deleteExamen(exam.idExamen,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>sup</a> </td>
+					        
+								
+								
+								
+							<!--	<td><button  ng-click="getEmp(e._links.self.href)"   type="button" class="btn btn-info">Voir<i class="glyphicon glyphicon-eye-open"></i><button>	</td>
+							<!--    <td><a       ng-click="getEmp(e._links.self.href)" data-original-title="voir la fiche de l'employee" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-eye-open"></i></a> </td>
+					      -->   
+																 	
+					        </tr>
+					</tbody>
+				</table>
+				
+				
+							 
+						</div>
+						
+						<form>
+									<div class="col-sm-4 form-group">
+									<label>	Matiere</label>
+									<select  ng-model="matiere" ng-options="i.nomMatiere for i in matieresList"  class="form-control">
+									<option value="" label="--Selectionner la matiere--"/>
+									</select>
+						            </div>
+						            
+						            <div class="col-sm-4 form-group">
+									<label>classe</label>
+									<select  ng-model="classe" ng-options="i.nomClasse for i in classesList"  class="form-control">
+									<option value="" label="--Selectionner la classe--"/>
+									</select>
+						            </div>
+						            
+						            <div class="col-sm-6 form-group">
+									<label>examen numero</label>
+									<select  ng-model="examen.numExamen" id="type" name="typeE" class="form-control">
+									<option value="1" label="permier examen"/>
+									<option value="2" label="Deuxieme examen"/>
+									<option value="3" label="Troisieme examen "/>
+						 
+					               	</select>
+									</div>	
+						             
+						            <div class="col-sm-4 form-group">
+									<label>date propose</label>
+									<input type="date"  ng-model="examen.date" name="dateDevoirs" class="form-control"/>
+									</div>
+									
+									 <div class="col-sm-6 form-group">
+									<label>duree d'examen</label>
+									<select  ng-model="examen.duree" id="type" name="typeE" class="form-control">
+									<option value="1h" label="une heure"/>
+									<option value="1.5h" label="une heure et demi"/>
+									<option value="2h" label="Deux heures"/>
+									<option value="2.5h" label="Deux heures et demi"/>
+									<option value="3" label="Trois heures "/>
+									<option value="3.5h" label="Trois heures et demi "/>
+						 
+					               	</select>
+									</div>	
+									
+									 <button  ng-click="saveExamen()"  type="button" class="btn btn-info">Valider</button>	
+									
+								</form>
+					</div>
+				</div>
+			</div>
+	 
+	</body>
+</html>

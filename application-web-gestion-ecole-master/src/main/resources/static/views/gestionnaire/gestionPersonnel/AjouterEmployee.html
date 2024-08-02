@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						 
+
+						 <li >
+							<a  ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+						
+
+							<li >
+							<a ui-sref="listeEmployee">
+							<i class="glyphicon glyphicon-stats"></i>
+							liste de personnel </a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="ajouterEmployee">
+							<i class="glyphicon glyphicon-user"></i>
+							ajouter un employee </a>
+						</li>
+
+						
+
+						 
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+
+		<div class="col-md-9" style="background-color: white">
+	 
+	 
+			   	
+       
+        <h3 class="well" id="titre">Ajout d'un employee</h3>{{empt.nom}}
+ 
+		      <form name="myForm">
+					
+					<div class="col-sm-12">
+						<div class="form-group">
+						<label>Sexe </label> <br>
+						<label class="radio-inline">
+						<input type="radio" value="masculain" ng-model="perso.sexe" name="sexe" id="sexe">Masculin
+						</label>
+						<label class="radio-inline">
+						<input type="radio" value="feminin" ng-model="perso.sexe" name="sexe" id="sexe">Feminin
+						</label>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+						<label>Nom</label>
+						<input type="text" ng-model="perso.nom"  placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" >
+						</div>
+						<div class="col-sm-6 form-group">
+						<label>Prénom</label>
+						<input type="text" ng-model="perso.prenom"   placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+						</div>
+				 	</div>	
+
+					<div class="row">
+						 		
+
+					        <div class="col-sm-6 form-group">
+						<label>Pays</label>
+						<select  ng-model="perso.pays"  id="pays" name="pays" class="form-control">
+						<option value="" label="--- Selectionner le pays ---"/>
+						<option value="Afghanistan" label="Afghanistan"/>
+						<option value="Algeria" label="Algeria"/>
+						<option value="Andorra" label="Andorra"/>
+						<option value="Angola" label="Angola"/>
+						<option value="Argentina" label="Argentina"/>
+						<option value="Australia" label="Australia"/>
+						<option value="Bahrain" label="Bahrain"/>
+						<option value="Bangladesh" label="Bangladesh"/>
+						</select>
+						</div>
+								
+
+						<div class="col-sm-6 form-group">
+						<label>Ville</label>
+						 	<select  ng-model="perso.ville"  id="pays" name="pays" class="form-control">
+						<option value="" label="--- Selectionner la ville ---"/>
+						<option value="Casablanca" label="casablanca"/>
+						<option value="Rabat" label="rabat"/>
+						<option value="Andorra" label="Andorra"/>
+						<option value="Angola" label="Angola"/>
+						<option value="Argentina" label="Argentina"/>
+						<option value="Australia" label="Australia"/>
+						<option value="Bahrain" label="Bahrain"/>
+						<option value="Bangladesh" label="Bangladesh"/>
+						</select>
+						</div>	
+
+						 	
+					</div>
+
+					<div class="form-group">
+					<label>Adresse</label>
+					<textarea  ng-model="perso.adresse"  placeholder="Entrer l'Adresse" rows="2" class="form-control"></textarea>
+					</div>	
+
+					<div class="row">
+					       <div class="col-sm-6 form-group">
+						<label>Tel.</label>
+						<input type="Tel" ng-model="perso.telephone"  placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel">
+						</div>	
+	
+						<div class="col-sm-6 form-group">
+						<label>Date de naissance</label>
+						<input type="Date" ng-model="perso.dateDeNaissance"  placeholder="Entrer la date de naissance" class="form-control" name="datedenaissance" id="datedenaissance">
+						</div>	
+					</div>	
+
+					<div class="row">
+					       <div class="col-sm-6 form-group">
+						<label>CIN</label>
+						<input type="text" ng-model="perso.cin"  placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel">
+						</div>	
+	
+						<div class="col-sm-6 form-group">
+						<label>Date de debut de travail </label>
+						<input type="Date" ng-model="perso.dateDebutTravail"  placeholder="Entrer la date de naissance" class="form-control" name="datedenaissance" id="datedenaissance">
+						</div>	
+					</div>	
+
+			
+					<div class="row">
+					<div class="col-sm-6 form-group">
+					<label>Email</label>
+					<input type="Email" ng-model="perso.email"  placeholder="Entrer l'adresse Email" class="form-control" name="email" id="email">
+					</div>
+
+					<div class="col-sm-6 form-group">
+					<label>type d'employee</label>
+						<select  ng-model="test.type"  id="type" name="typeE" class="form-control">
+						<option value="" label="--- Selectionner le type demployee ---"/>
+						<option value="professeurs" label="Professeur"/>
+						<option value="directeurs" label="Directeur"/>
+						<option value="gardiens" label="Gardien"/>
+						<option value="femmeDeMenages" label="Menage"/>
+						<option value="chauffeurs" label="Chauffeur"/>
+						<option value="secretaires" label="Secretaire"/>
+						<option value="gestionnaires" label="Gestionnaire"/>
+						<option value="aides" label="Aide"/>
+						</select><br>
+					 
+<!-- 						<div class="col-sm-2 form-group"> -->
+						 <button  ng-click="saveEmp()"   type="button" id="button" class="btn btn-info btn pull-right">Valider</button>
+					</div>	
+					
+					</div>		   
+				
+					 
+			</form> 
+			</div>
+
+		</div>		    	 	     
+</div>
+
+
+</body>
+</html>

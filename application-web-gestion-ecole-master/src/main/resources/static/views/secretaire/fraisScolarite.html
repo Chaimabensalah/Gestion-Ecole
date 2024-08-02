@@ -1,0 +1,288 @@
+ <!DOCTYPE html>
+<html >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title></title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<style>
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+   /* margin:23px;*/
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+
+<body ng-app="ecole" >
+<!-- <script type="text/javascript" src="../node_modules/angular/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../js/app.js"></script> -->
+<!-- <script src="../node_modules/angular-utils-pagination/dirPagination.js"></script> -->
+
+<div id="fb-root"></div>
+
+<div class="container" >
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+<!-- 					<img src="https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/13887011_995565660557110_1567915088465375555_n.jpg?oh=38aec68d920a9d9779500edb6625b7d5&oe=5880FBF1" class="img-responsive" alt=""> -->
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+				     <ul>
+				         <li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							My Dash</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						
+						<li >
+							<a ui-sref="inscription">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+						
+						<li>
+							<a ui-sref="ajouterService">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+						
+
+						<li class="active">
+							<a ui-sref="fraisScolarite">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais de scolarite </a>
+						</li>
+						
+						<li>
+							<a ui-sref="listeInscriptions">
+							<i class="glyphicon glyphicon-stats"></i>
+							Liste d'inscriptions </a>
+						</li>
+						
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+	 
+			<div>
+				<h3 class="well" >frais de scolarite  </h3>
+				 
+		<h5 style="text-decoration: underline; color:#0266C8">Choix d'étudiant</h5>
+		
+		<div class="row">
+		
+			<div class="col-sm-4 form-group">
+       		  <label>Matricule</label>
+			  <select  ng-model="eleveS" ng-options="e.matricule for e in eleves" ng-change="getServicesPareleve(eleveS.idPersonne)"  class="form-control">
+		   	   <option value="" label="--Selectionner la classe--"/>
+			   </select>
+			</div>
+			 
+			<div class="col-sm-4 form-group">
+               <label>service</label>
+			   <select  ng-model="service" ng-options="e.nomService for e in services" ng-change="getMoisNonPayes()"  class="form-control">
+		   	     <option value="" label="--Selectionner le service--"/>
+			   </select>
+		    </div>
+			   <div class="col-sm-4 form-group">
+			   <label >date de paiement</label>
+              	<input type="date" name="date" ng-model="paiement.datePaiment" class="form-control"/>
+			  </div>
+			  </div>
+		</div> 
+		<br>
+		<div  class="popup"  >
+	    <h5  style="text-decoration: underline; color:#0266C8">  paiement pour le mois {{moisLettre}}</h5>
+	    
+		    <span class="popuptext" id="myPopup">paye : {{moisPaye}}mois
+		     <br>reste a paye : {{mois}}mois
+		     </span></div>
+		<div class="row">
+		 
+		       
+	   
+		    
+		    <div class="col-sm-6 form-group">
+		       
+		       
+			   <h3><strong>Montant:</strong>{{tarif.montant }}  dhs</h3>
+		    </div>
+		    
+		 </div>
+		    
+		   <div class="row">
+		   
+			 <div class="col-sm-6 form-group">
+			 	<label  >Réduction</label>
+		     	<select  ng-model="reduction" ng-options="r.typeReduction for r in reductions" ng-change="calculerReduction(r.prctageReduction)"  class="form-control">
+		   	 	<option value="" label="--Selectionner la classe--"/>
+			 	</select>
+			 </div>
+			 
+			 
+			  <div class="popup">
+			  <span class="popuptext" id="myPopup2">motant apres reduction :{{montantApresReduction}} dhs
+		     </span></div>
+			 
+			 <div class="col-sm-6 form-group">
+		  <label>	mode de paiment</label>
+		  <select id="pays" name="pays" class="form-control" ng-model="paiement.modePaiement" ng-change="getModePaiement()">
+			 <option value="espece" label="espece"/>
+			 <option value="cheque" label="cheque"/>
+			 <option value="virement" label="virment"/>
+		  </select>
+			</div>
+		</div>
+		<div class="row">
+          <div class="col-sm-6 form-group">
+          
+		  <div ng-show="paiement.modePaiement === 'cheque'">
+            <label>numero de cheque</label>
+            <input type="text" name="numCheque" ng-model="paiement.numCheque" class="form-control"/></p>
+          </div>
+          </div>  
+          
+          <div class="col-sm-5 form-group">
+          
+		  <div ng-show="paiement.modePaiement === 'virement'">
+            <label>numero de recu</label>
+            <input type="text" name="numRecu" ng-model="paiement.numRecu" class="form-control"/>
+          </div>
+          </div>  
+            
+            
+		  <div class="col-sm-1 form-group">
+		 <button  ng-click="savePaiementService()"  type="button" class="btn btn-info">Valider</button>	
+		 </div>
+		 
+		 </div>
+		 
+		 
+				
+		  </div>
+		  
+		
+		 <div class="row">
+		 
+		    
+			
+	
+		  
+		 
+		 </div>
+		 
+		  <br>
+	</div>
+			
+</div>
+
+
+
+
+
+</body>
+</html>

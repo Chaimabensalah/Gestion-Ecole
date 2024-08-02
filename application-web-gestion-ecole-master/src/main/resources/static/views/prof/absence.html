@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Absence/Retard</title>
+	</head>
+
+	<body>
+ 
+		<div class="container">
+			<div class="row profile">
+				<div class="col-md-3">
+					<div class="profile-sidebar">
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle">
+							<div align="center">
+								<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+							</div>
+							<div class="profile-usertitle-name">
+								Nom
+							</div>
+							<div class="profile-usertitle-job">
+								Prénom
+							</div>
+						</div>
+						<!-- END SIDEBAR USER TITLE -->
+						<!-- SIDEBAR BUTTONS -->
+						<div class="profile-userbuttons">
+							<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Editer le profil</button>
+							<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Messages</button>
+						</div>
+						<!-- END SIDEBAR BUTTONS -->
+						<!-- SIDEBAR MENU -->
+						<div class="profile-usermenu">
+							<ul class="nav">
+								<li >
+									<a href="profil.html">
+									<i class="glyphicon glyphicon-user"></i>
+									Mon Profil </a>
+								</li>
+							
+								<li >
+									<a ui-sref="devoirs">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion de Devoirs </a>
+								</li>
+								<li>
+									<a ui-sref="observations">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des observations </a>
+								</li>
+								<li class="active">
+									<a ui-sref="absence">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des absences/retards </a>
+								</li>
+								<li>
+									<a ui-sref="emploisTemps">
+									<i class="glyphicon glyphicon-calendar"></i>
+									Emploi du temps </a>
+								</li>
+								<li>
+									<a ui-sref="cahierText">
+									<i class="glyphicon glyphicon-book"></i>
+									Cahier de texte </a>
+								</li>
+								<li>
+								  <a ui-sref="notes">
+									<i class="glyphicon glyphicon-stats"></i>
+									Consultation de notes </a>
+								</li>
+
+								<li>
+									<a ui-sref="classes">
+									<i class="glyphicon glyphicon-euro"></i>
+									Liste des classes </a>
+								</li>
+								<li >
+									<a ui-sref="controles">
+									<i class="glyphicon glyphicon-time"></i>
+									Planification de controles </a>
+								</li>
+								
+								<li >
+									<a ui-sref="gardes">
+									<i class="glyphicon glyphicon-time"></i>
+									  gardes </a>
+								</li>
+							</ul>
+						</div>
+						<!-- END MENU -->
+					</div>
+				</div>
+			<!-- App -->
+			
+			<div class="col-md-9" style="background-color: white">
+		  <h3 class="well" s>Liste des absence</h3>
+		
+                       <label>la classe</label>
+						<select  ng-model="classe" ng-options="i.nomClasse for i in classesList" ng-change="getAbsencesParClasse()"  class="form-control">
+						<option value="" label="--Selectionner la classe--"/>
+						</select>
+						
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>eleve</th>
+							<th>matiere</th>
+							<th>date</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						    <tr ng-repeat="a in absencesList" >
+						   		 
+          					    <td>{{a.e}}</td>
+          					    <td>{{a.m}}</td>
+								<td>{{a.dateAbsence}}</td>
+								<td> <a ng-click='recupererAbsence(a.idAbsence)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                <td><a ui-sref='absence' ng-click='deleteAbsence(a.idAbsence,activeJob)' data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
+					        </tr>
+					</tbody>
+				</table>
+				<hr>
+				
+				<h3 class="well" s>Liste des retards</h3>
+		
+                       <label>la classe</label>
+						<select  ng-model="classe" ng-options="i.nomClasse for i in classesList" ng-change="getRetardsParClasse()"  class="form-control">
+						<option value="" label="--Selectionner la classe--"/>
+						</select>
+						
+						
+	       
+      
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							
+							<th>eleve</th>
+							<th>matiere</th>
+							<th>date</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						    <tr ng-repeat="e in retardsList" >
+						   		 
+								<td>{{e.dateAbsence}}</td>
+								<td> <a ng-click='recupererAbsence(a.idAbsence)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>mo</a>
+                                <td><a ui-sref='observations' ng-click='deleteAbsence(a.idAbsence,activeJob)' data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>supp</a> </td>
+					        </tr>
+					</tbody>
+				</table>
+				<hr>
+	 
+						
+							<h3 class="well">Déclarer un retard ou une absence </h3>
+							<div class="form-group">
+								<form>
+								
+									 <div class="col-sm-4 form-group">
+										<label>	Matiere</label>
+										<select  ng-model="matiere" ng-options="i.nomMatiere for i in matieresList"  class="form-control">
+										<option value="" label="--Selectionner la matiere--"/>
+										</select>
+						             </div>
+						            
+									<div class="col-sm-4 form-group">
+										<label>	Eleve</label>
+										<select  ng-model="eleve" ng-options="i.matricule for i in elevesList"  class="form-control">
+										<option value="" label="--Selectionner l'eleve--"/>
+										</select>
+						            </div>
+						            
+						            <div class="col-sm-4 form-group">
+						          	 	<label>	date</label>
+									 	<input type="date" ng-model="absence.dateAbsence" name="dateDevoirs" class="form-control"/>
+									</div>
+									
+									<div class="radio">
+										<label><input type="radio" ng-model="type.a"  ng-value="'absences'" name="optradio">Absence</label>
+										<label><input type="radio" ng-model="type.a"    ng-value="'retards'" name="optradio">retards</label>
+									</div>
+									
+									 <button  ng-click="saveAbsenceRetard()"  type="button" class="btn btn-info">Valider</button>	
+
+		 	
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			 
+		
+	</body>
+</html>

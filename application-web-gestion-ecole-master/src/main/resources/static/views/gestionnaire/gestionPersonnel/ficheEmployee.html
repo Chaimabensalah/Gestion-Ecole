@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+
+<body ng-app="ecole">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js" ></script>
+<script src="../node_modules/angular/angular.min.js" ></script>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						 
+
+						 <li >
+							<a  ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+						<li>
+							<a ui-sref="listeEmployee">
+							<i class="glyphicon glyphicon-stats"></i>
+							liste de personnel </a>
+						</li>
+
+						<li class="active">
+							<a ui-sref="AjouterEmployee">
+							<i class="glyphicon glyphicon-user"></i>
+							ajouter un employee </a>
+						</li>
+
+						
+
+						 
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+
+        
+        <h3 class="well" s>fiche Employee</h3> 
+      <div class="row">
+      
+        
+    					
+								 	
+          
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Nom et prenom:</td>
+                        <td>{{empt.nom}} {{empt.prenom}}</td>
+                      </tr>
+                      
+                      <tr>
+                        <td>Date de naissance</td>
+                        <td>{{empt.dateDeNaissance}}</td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>Gender</td>
+                        <td>{{empt.sexe}}</td>
+                      </tr>
+		            	<tr>
+                        <td>Date debut de travail</td>
+                        <td>{{empt.dateDebutTravail}}</td>
+                      </tr>
+                        <tr>
+                        <td>Addresse</td>
+                        <td>{{empt.adresse}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:"+{{empt.email}}>{{empt.email}}</a></td>
+                      </tr>
+                        <td>telephone</td>
+                        <td>{{empt.telephone}}</td>
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                
+                
+                
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                         <span class="pull-right">
+                            <a  ui-sref='ajouterEmployee' ng-click="recupererEmp()" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a ui-sref='listeEmployee' ng-click="delete(activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+<!--                         -->
+                    </div>
+            
+          </div>
+        </div>
+      
+ 
+  
+
+</body>
+
+</html>
+
+ 
+
+	   
+    

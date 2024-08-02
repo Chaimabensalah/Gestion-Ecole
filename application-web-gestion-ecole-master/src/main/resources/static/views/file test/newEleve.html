@@ -1,0 +1,251 @@
+ <!DOCTYPE html>
+<html >
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body ng-app="ecole" >
+<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						<li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							My Dash</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						<li>
+							<a href="listeinscriptions.html">
+							<i class="glyphicon glyphicon-stats"></i>
+							Liste d'inscriptions </a>
+						</li>
+
+						<li class="active">
+							<a href="inscription.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+
+						<li>
+							<a href="fraisinscription.html">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais d'inscription </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+
+        
+        <h3 class="well" s>Inscription élève</h3>
+
+
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#home">Etape 1</a></li>
+		    <li><a data-toggle="tab" href="#menu1">Etape 2</a></li>
+		  </ul>
+
+		  <div class="tab-content" ng-app="ecole">
+		    <div id="home" class="tab-pane fade in active">
+				    <h3>Etape 1 : Information Élève</h3>
+				    <form name="myForm">
+					<hr>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>Sexe </label> <br>
+									<label class="radio-inline">
+								      <input type="radio" ng-model="eleve.sexe" name="sexe" id="sexe">Masculin
+								    </label>
+								    <label class="radio-inline">
+								      <input type="radio"ng-model="eleve.sexe" name="sexe" id="sexe">Feminin
+								    </label>
+								</div>
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Nom</label>
+										<input type="text" ng-model="eleve.nom" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" >
+									</div>
+									<div class="col-sm-6 form-group">
+										<label>Prénom</label>
+										<input type="text" ng-model="eleve.prenom" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+									</div>
+								</div>	
+
+								<div class="row">
+									<!-- <div class="col-sm-4 form-group">
+										<label>Pays</label>
+										<input type="text" placeholder="Entrer le Pays" class="form-control" name="pays" id="pays">
+									</div>	 -->
+
+									<div class="col-sm-4 form-group">
+									  <label>Pays</label>
+									    <select  ng-model="eleve.pays" id="pays" name="pays" class="form-control">
+									      	<option value="" label="--- Selectionner le pays ---"/>
+											<option value="Afghanistan" label="Afghanistan"/>
+											<option value="Algeria" label="Algeria"/>
+											<option value="Andorra" label="Andorra"/>
+											<option value="Angola" label="Angola"/>
+											<option value="Argentina" label="Argentina"/>
+											<option value="Australia" label="Australia"/>
+											<option value="Bahrain" label="Bahrain"/>
+											<option value="Bangladesh" label="Bangladesh"/>
+											<option value="Belgium" label="Belgium"/>
+											<option value="Botswana" label="Botswana"/>
+											<option value="Brazil" label="Brazil"/>
+											<option value="Cameroon" label="Cameroon"/>
+											<option value="Canada" label="Canada"/>
+											<option value="Chile" label="Chile"/>
+											<option value="China" label="China"/>
+											<option value="Colombia" label="Colombia"/>
+											<option value="Congo" label="Congo"/>
+											<option value="Congo, the Democratic Republic of the" label="Congo, the Democratic Republic of the"/>
+											<option value="Costa Rica" label="Costa Rica"/>
+											<option value="Côte d'Ivoire" label="Côte d'Ivoire"/>
+											<option value="Croatia" label="Croatia"/>
+											<option value="Curaçao" label="Curaçao"/>
+											<option value="Cyprus" label="Cyprus"/>
+											<option value="Czech Republic" label="Czech Republic"/>
+											<option value="Denmark" label="Denmark"/>
+											<option value="Djibouti" label="Djibouti"/>
+											<option value="Dominica" label="Dominica"/>
+											<option value="Dominican Republic" label="Dominican Republic"/>
+											<option value="Ecuador" label="Ecuador"/>
+											<option value="Egypt" label="Egypt"/>
+											<option value="El Salvador" label="El Salvador"/>
+											<option value="Equatorial Guinea" label="Equatorial Guinea"/>
+											<option value="Ethiopia" label="Ethiopia"/>
+											<option value="French" label="French"/>
+											<option value="Gabon" label="Gabon"/>
+											<option value="Paraguay" label="Paraguay"/>
+											<option value="Peru" label="Peru"/>
+											<option value="Philippines" label="Philippines"/>
+											<option value="Poland" label="Poland"/>
+											<option value="United Arab Emirates" label="United Arab Emirates"/>
+											<option value="United Kingdom" label="United Kingdom"/>
+											<option value="United States" label="United States"/>
+											<option value="Uruguay" label="Uruguay"/>
+											<option value="Uzbekistan" label="Uzbekistan"/>
+											<option value="Venezuela" label="Venezuela"/>
+											<option value="Yemen" label="Yemen"/>
+											<option value="Zambia" label="Zambia"/>
+											<option value="Zimbabwe" label="Zimbabwe"/>
+									    </select>
+									 </div>
+								
+
+									<div class="col-sm-4 form-group">
+										<label>Ville</label>
+										<input type="text" ng-model="eleve.ville" placeholder="Entrer la ville" class="form-control" name="ville" id="ville">
+									</div>	
+									<div class="col-sm-4 form-group">
+										<label>Code postale</label>
+										<input type="text" ng-model="eleve.codePostale" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+									</div>		
+								</div>
+
+								<div class="form-group">
+									<label>Adresse</label>
+									<textarea  ng-model="eleve.adresse" placeholder="Entrer l'Adresse" rows="2" class="form-control"></textarea>
+								</div>	
+
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Tel.</label>
+										<input type="text" ng-model="eleve.telephone" placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel">
+									</div>		
+									<div class="col-sm-6 form-group">
+										<label>Date de naissance</label>
+										<input type="Date" ng-model="eleve.dateDeNaissance" placeholder="Entrer la date de naissance" class="form-control" name="datedenaissance" id="datedenaissance">
+									</div>	
+								</div>						
+			
+							<div class="form-group">
+								<label>Email</label>
+								<input type="Email" ng-model="eleve.email" placeholder="Entrer l'adresse Email" class="form-control" name="email" id="email">
+							</div>	   
+							<button  ng-click="saveEleve()" ui-sref="newResponsable" type="button" class="btn btn-info">Valider</button>					
+							</div>
+						</form> 
+					</div>
+		    </div>
+		   
+			 
+ 
+</body>
+</html>

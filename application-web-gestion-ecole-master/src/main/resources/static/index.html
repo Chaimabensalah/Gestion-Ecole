@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body ng-app="ecole" >
+
+       
+         <a ui-sref="gestionnaireHome">espace gestionnaire</a>
+         <a ui-sref="absence">espace prof</a>
+         <a ui-sref="inscription">espace secretaire</a>
+         <a ui-sref="absenceRespo">espace responsable </a>
+         <a ui-sref="absenceEleve">espace eleve</a>
+        
+<!--     <div>    -->
+<!--          <ul class="nav nav-pills" role="tablist"> -->
+<!-- 			<li class="active"><a href="#/">home</a></li> -->
+<!-- 			<li><a ui-sref="login">login</a></li> -->
+<!-- 			<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+   
+   <div ui-view>
+      
+        <script src="node_modules/angular/angular.min.js" ></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js" ></script>
+     
+        <script src="js/app.js"></script>
+         <script src="js/pdf.js"></script>
+         
+<!--           <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script> -->
+<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
+  
+        
+        <script src="js/profController.js"></script>
+           <script src="js/devoirController.js"></script>
+           <script src="js/observationController.js"></script>
+           <script src="js/absenceRetardController.js"></script>
+           <script src="js/cahierTexteController.js"></script>
+           <script src="js/notesController.js"></script>
+           <script src="js/eleveController.js"></script>
+         
+        <script src="js/employeeController.js"></script>
+        <script src="js/fournisseurController.js"></script>
+        <script src="js/serviceController.js"></script>
+        <script src="js/responsableController.js"></script>
+        
+        <script src="js/secretaireController.js"></script>
+        
+        <script src="js/loginController.js"></script>
+        </div>
+        
+    
+   
+    </body>
+  
+</html>

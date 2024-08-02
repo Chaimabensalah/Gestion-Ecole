@@ -1,0 +1,295 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<title></title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="node_modules/angular/angular.min.js" ></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js" ></script>
+        <script src="js/app.js"></script>
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						<li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							My Dash</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						<li>
+							<a href="listeinscriptions.html">
+							<i class="glyphicon glyphicon-stats"></i>
+							Liste d'inscriptions </a>
+						</li>
+
+						<li class="active">
+							<a href="inscription.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+
+						<li>
+							<a href="fraisinscription.html">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais d'inscription </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+
+        
+        <h3 class="well" s>Inscription élève</h3>
+
+
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#home">Etape 1</a></li>
+		    <li><a data-toggle="tab" href="#menu1">Etape 2</a></li>
+		  </ul>
+
+		  <div class="tab-content" ng-app="ecole">
+		    
+		     
+				    <h3>Etape 1 : Information Élève</h3>
+				    <form name="myForm">
+					<hr>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>Sexe </label> <br>
+									<label class="radio-inline">
+								      <input type="radio" name="sexe" id="sexe" ng-model="eleve.sexe" >Masculin
+								    </label>
+								    <label class="radio-inline">
+								      <input type="radio" name="sexe" id="sexe" ng-model="eleve.sexe" >Feminin
+								    </label>
+								</div>
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Nom</label>
+										<input type="text" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" ng-model="eleve.nom">
+									</div>
+									<div class="col-sm-6 form-group">
+										<label>Prénom</label>
+										<input type="text" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom" ng-model="eleve.prenom">
+									</div>
+								</div>	
+
+								<div class="row">
+									<!-- <div class="col-sm-4 form-group">
+										<label>Pays</label>
+										<input type="text" placeholder="Entrer le Pays" class="form-control" name="pays" id="pays">
+									</div>	 -->
+
+									<div class="col-sm-4 form-group">
+									  <label>Pays</label>
+									    <select id="pays" name="pays" class="form-control" ng-model="eleve.pays">
+									      	<option value="" label="--- Selectionner le pays ---"/> 
+											<option value="Japan" label="Japan"/>
+											<option value="Jordan" label="Jordan"/>
+											<option value="Kazakhstan" label="Kazakhstan"/>
+											<option value="Kenya" label="Kenya"/>
+											<option value="Korea, Democratic People's Republic of" label="Korea, Democratic People's Republic of"/>
+											<option value="Korea Republic of" label="Korea Republic of"/>
+											<option value="Kuwait" label="Kuwait"/>
+											<option value="Lebanon" label="Lebanon"/>
+											<option value="Libya" label="Libya"/> 
+											<option value="United Arab Emirates" label="United Arab Emirates"/>
+											<option value="United Kingdom" label="United Kingdom"/>
+											<option value="United States" label="United States"/>
+											<option value="Uruguay" label="Uruguay"/>
+											<option value="Uzbekistan" label="Uzbekistan"/>
+											<option value="Venezuela" label="Venezuela"/>
+											<option value="Yemen" label="Yemen"/>
+											<option value="Zambia" label="Zambia"/>
+											<option value="Zimbabwe" label="Zimbabwe"/>
+									    </select>
+									 </div>
+								
+
+									<div class="col-sm-4 form-group">
+										<label>Ville</label>
+										<input type="text" placeholder="Entrer la ville" class="form-control" name="ville" id="ville" ng-model="eleve.ville">
+									</div>	
+									<div class="col-sm-4 form-group">
+										<label>Code postale</label>
+										<input type="text" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="codepostale" ng-model="eleve.codepostale" >
+									</div>		
+								</div>
+
+								<div class="form-group">
+									<label>Adresse</label>
+									<textarea placeholder="Entrer l'Adresse" rows="2" class="form-control" ng-model="eleve.adresse"></textarea>
+								</div>	
+
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Tel.</label>
+										<input type="text" placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel" ng-model="eleve.telephone">
+									</div>		
+							 					
+			
+							 
+							 					
+							</div>
+						</form> 
+					</div>
+		    </div>
+		    
+		      <h3>Etape 2 : Information Responsable</h3>
+		       
+		      		<form>
+					<hr>
+										<hr>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>Sexe </label> <br>
+									<label class="radio-inline">
+								      <input type="radio" name="sexe" id="sexe" ng-model="respo.sexe" >Masculin
+								    </label>
+								    <label class="radio-inline">
+								      <input type="radio" name="sexe" id="sexe" ng-model="respo.sexe" >Feminin
+								    </label>
+								</div>
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Nom</label>
+										<input type="text" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" ng-model="respo.nom">
+									</div>
+									<div class="col-sm-6 form-group">
+										<label>Prénom</label>
+										<input type="text" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom" ng-model="respo.prenom">
+									</div>
+								</div>	
+
+								<div class="row">
+									<!-- <div class="col-sm-4 form-group">
+										<label>Pays</label>
+										<input type="text" placeholder="Entrer le Pays" class="form-control" name="pays" id="pays">
+									</div>	 -->
+
+									<div class="col-sm-4 form-group">
+									  <label>Pays</label>
+									    <select id="pays" name="pays" class="form-control" ng-model="pays">
+									      	<option value="" label="--- Selectionner le pays ---"/>
+											<option value="Afghanistan" label="Afghanistan"/>
+											<option value="Algeria" label="Algeria"/>
+											<option value="Andorra" label="Andorra"/>
+											<option value="Angola" label="Angola"/>
+											<option value="Uzbekistan" label="Uzbekistan"/>
+											<option value="Venezuela" label="Venezuela"/>
+											<option value="Yemen" label="Yemen"/>
+											<option value="Zambia" label="Zambia"/>
+											<option value="Zimbabwe" label="Zimbabwe"/>
+									    </select>
+									 </div>
+								
+
+									<div class="col-sm-4 form-group">
+										<label>Ville</label>
+										<input type="text" placeholder="Entrer la ville" class="form-control" name="ville" id="ville" ng-model="respo.ville">
+									</div>	
+									<div class="col-sm-4 form-group">
+										<label>Code postale</label>
+										<input type="text" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="codepostale" ng-model="respo.codepostale" >
+									</div>		
+								</div>
+
+								<div class="form-group">
+									<label>Adresse</label>
+									<textarea placeholder="Entrer l'Adresse" rows="2" class="form-control" ng-model="respo.adresse"></textarea>
+								</div>	
+
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<label>Tel.</label>
+										<input type="text" placeholder="Entrer Le numéro de téléphone" class="form-control" name="tel" id="tel" ng-model="respo.telphone">
+									</div>		
+									<div class="col-sm-6 form-group">
+										<label>Date de naissance</label>
+										<input type="Date" placeholder="Entrer la date de naissance" class="form-control" name="datedenaissance" id="datedenaissance" ng-model="respo.dateDeNaissance">
+									</div>	
+								</div>						
+			
+							<div class="form-group">
+								<label>Email</label>
+								<input type="Email" placeholder="Entrer l'adresse Email" class="form-control" name="email" id="email" ng-model="respo.email">
+							</div>	
+							<button ng-click="saveInscription()" type="button" class="btn btn-info">Valider</button>					
+							</div>
+				</form> 
+				</div>
+		    </div>
+		  </div>
+	</div>		
+	</div>
+</div>
+
+
+</body>
+</html>

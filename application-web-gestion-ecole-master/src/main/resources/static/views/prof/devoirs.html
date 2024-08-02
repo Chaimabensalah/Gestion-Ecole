@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Gestion de devoirs</title>
+		<style type="text/css">
+		#eventForm .form-control-feedback {
+		    top: 0;
+		    right: -15px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row profile">
+				<div class="col-md-3">
+					<div class="profile-sidebar">
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle">
+							<div align="center">
+								<img src="../images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+							</div>
+							<div class="profile-usertitle-name">
+								Nom
+							</div>
+							<div class="profile-usertitle-job">
+								Prénom
+							</div>
+						</div>
+						<!-- END SIDEBAR USER TITLE -->
+						<!-- SIDEBAR BUTTONS -->
+						<div class="profile-userbuttons">
+							<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Editer le profil</button>
+							<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Messages</button>
+						</div>
+						<!-- END SIDEBAR BUTTONS -->
+						<!-- SIDEBAR MENU -->
+						<div class="profile-usermenu">
+								<ul class="nav">
+								<li >
+									<a href="profil.html">
+									<i class="glyphicon glyphicon-user"></i>
+									Mon Profil </a>
+								</li>
+								<li>
+									<a href="messages.html">
+									<i class="glyphicon glyphicon-envelope"></i>
+									Messages </a>
+								</li>
+								<li class="active" >
+									<a ui-sref="devoirs">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion de Devoirs </a>
+								</li>
+								<li>
+									<a ui-sref="observations">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des observations </a>
+								</li>
+								<li >
+									<a ui-sref="absence">
+									<i class="glyphicon glyphicon-book"></i>
+									Gestion des absences/retards </a>
+								</li>
+								<li>
+									<a ui-sref="emploisTemps">
+									<i class="glyphicon glyphicon-calendar"></i>
+									Emploi du temps </a>
+								</li>
+								<li>
+									<a ui-sref="cahierText">
+									<i class="glyphicon glyphicon-book"></i>
+									Cahier de texte </a>
+								</li>
+								<li>
+								  <a ui-sref="notes">
+									<i class="glyphicon glyphicon-stats"></i>
+									Consultation de notes </a>
+								</li>
+
+								<li>
+									<a ui-sref="classes">
+									<i class="glyphicon glyphicon-euro"></i>
+									Liste des classes </a>
+								</li>
+								<li >
+									<a ui-sref="controles">
+									<i class="glyphicon glyphicon-time"></i>
+									Planification de controles </a>
+								</li>
+							</ul>
+						</div>
+						<!-- END MENU -->
+					</div>
+				</div>
+			
+				<div class="col-md-9" style="background-color: white">
+					<div ng-app="myApp">
+						<h3 class="well">liste des devoirs classés  par matiere</h3>				
+			     		    <label>matiere</label>
+							<select  ng-model="matiere" ng-options="i.nomMatiere for i in matieresList"  ng-change=" getDevoirParMatiere()" id="type" name="typeE" class="form-control">
+							<option value="" label="--Selectionner la matiere--"/>
+							</select>	
+					 		 
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>classe</th>
+								<th>date</th>
+								<th>tache</th>
+							</tr>
+							</thead>
+						    
+						<tbody>
+						     <tr ng-repeat="devoir in devoirsList" >
+						      
+						   		<td>cp1</td>
+								<td>{{devoir.dateDevoir}}</td>
+								<td>{{devoir.tache}}</td>
+								 <td> <a ng-click='recupererDevoir(devoir.idDevoir)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a ui-sref='devoirs' ng-click="delete(devoir.idDevoir,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+					        
+					        </tr>
+						</tbody>
+					</table>
+							<h3 class="well" id="titre">Ajoute d'un devoir</h3>
+							<div class="form-group">
+								<form>
+								<div class="row">
+									<div class="col-sm-4 form-group">
+									<label>	Matiere</label>
+									<select  ng-model="matiere" ng-options="i.nomMatiere for i in matieresList"  class="form-control">
+									<option value="" label="--Selectionner la matiere--"/>
+									</select>
+						            </div>
+						            
+						            <div class="col-sm-4 form-group">
+									<label>classe</label>
+									<select  ng-model="classe" ng-options="i.nomClasse for i in classesList"  class="form-control">
+									<option value="" label="--Selectionner la classe--"/>
+									</select>
+						            </div>
+						           
+									
+						            </div>
+						            <div class="row">
+						            
+						              <div class="col-sm-4 form-group">
+									<label>date de remise </label>
+									<input type="date"  ng-model="devoir.dateDevoir" name="dateDevoirs" class="form-control"/>
+									</div>
+									
+						            <div class="col-sm-4 form-group">
+						             <label>taches a faire </label>
+						             <textarea name="tache" ng-model="devoir.tache" class="form-control" rows="4" cols="50" placeholder="Taches :">
+						             </textarea>
+						             </div>
+						             
+									 <div class="col-sm-4 form-group">
+									 <br>
+									 <button  ng-click="saveDevoir()"  type="button" id ="button" class="btn btn-info">Valider</button>	
+									</div>	
+									</div>				
+</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

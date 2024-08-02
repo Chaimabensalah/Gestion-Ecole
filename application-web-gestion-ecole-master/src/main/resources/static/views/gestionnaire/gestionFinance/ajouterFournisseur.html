@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<title>
+
+</title>
+
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+     <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<div class="profile-userpic">
+				</div>
+				
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+					
+				</div>
+				
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				
+				<div class="profile-usermenu">
+					<ul class="nav">
+					
+						<li >
+							<a ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+				
+
+						<li class="active">
+							<a ui-sref="ajouterFournisseur">
+							<i class="glyphicon glyphicon-stats"></i>
+							fournisseurs </a>
+						</li>
+
+						<li >
+							<a ui-sref="ajouterFacture">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							factures  </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+
+  
+  
+       <!--   <div ng-include="'finance.html'"></div>-->
+		<div class="col-md-9" style="background-color: white">
+		<h3 class="well" >liste de fournisseurs </h3>
+			<table class="table table-striped">
+					<thead>
+						<tr>
+							
+							<th>Nom</th>
+							<th>telephone</th>
+							<th>email</th>
+							<th>adresse</th>
+							<th>ville</th>
+							<th>contact principale</th>
+							<th>contacter</th>
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="e in fournisseurs">
+								<td>{{e.nom}}</td>
+								<td>{{e.telephone}}</td>
+								<td>{{e.email}}</td>
+								<td>{{e.adresse}}</td>
+								<td>{{e.ville}}</td>
+								<td>{{e.contact.nom}} {{e.contact.prenom}}</td>	
+								
+								<td> <a ng-click='recupererFournisseur(e.idFournisseur)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a ng-click="deleteFournisseur(e.idFournisseur,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+								<td> <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                       </td>
+								 	
+					        </tr>
+					</tbody>
+				</table>
+        
+        <hr>
+     
+        <h3 class="well" id="titre">Ajout d'un fournisseur</h3>
+
+ 		<div class="tab-content" >
+		    <div id="home" class="tab-pane fade in active">
+		      <form name="myForm">
+					<hr>
+					
+					<div class="row">
+						<div class="col-sm-6 form-group">
+						<label>Nom</label>
+						<input type="text" ng-model="fournisseur.nom" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" >
+						</div>
+						<div class="col-sm-6 form-group">
+						<label>adresse</label>
+						<input type="text" ng-model="fournisseur.adresse" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+						</div>
+					
+           			</div>
+
+					<div class="row">
+						<div class="col-sm-4 form-group">
+                        <label>ville</label>
+						<select  ng-model="fournisseur.ville" id="ville" name="ville" class="form-control">
+						<option value="" label="--- Selectionner la ville ---"/>
+						<option value="Afghanistan" label="Afghanistan"/>
+						<option value="Algeria" label="Algeria"/>
+						<option value="Andorra" label="Andorra"/>
+						<option value="Angola" label="Angola"/>
+						<option value="Argentina" label="Argentina"/>
+						<option value="Australia" label="Australia"/>
+						<option value="Bahrain" label="Bahrain"/>
+						<option value="Bangladesh" label="Bangladesh"/>
+						</select>
+						</div> 
+						
+
+						<div class="col-sm-4 form-group">
+						<label>telephone</label>
+						<input type="text" ng-model="fournisseur.telephone" placeholder="telephone" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+						
+						<div class="col-sm-4 form-group">
+						<label>email</label>
+						<input type="email" ng-model="fournisseur.email" placeholder="email" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+
+
+				 	</div>	
+<hr>
+
+					
+						<h3> contact principal </h3>			
+				<div class="row">
+					        <div class="col-sm-4 form-group">
+						<label>Nom</label>
+						<input type="text" ng-model="perso.nom" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" >
+						</div>
+
+						<div class="col-sm-4 form-group">
+						<label>prenom</label>
+						<input type="text" ng-model="perso.prenom" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+						</div>
+						
+						<div class="col-sm-4 form-group">
+						<label>email</label>
+						<input type="email" ng-model="perso.email" placeholder="Entrer l'email" class="form-control" name="email" id="email" name="email" id="email">
+						</div>
+				</div>
+				<div class="row">		
+
+						
+						
+						<div class="col-sm-4 form-group">
+						<label>cin</label>
+						<input type="text" ng-model="perso.cin" placeholder="Entrer le cin " class="form-control" name="email" id="email" name="email" id="email">
+						</div>
+	
+						<div class="col-sm-4 form-group">
+						<label>telephone</label>
+						<input type="text" ng-model="perso.telephone" placeholder="Entrer lenumero de telephone " class="form-control" name="telephone" id="telephone" name="telephone" id="telephone">
+						</div>	
+						
+						<div class="col-sm-4 form-group">
+						<label>fonction</label>
+						<input type="text" ng-model="perso.fonction" placeholder="fonction" class="form-control" name="telephone" id="telephone" name="telephone" id="telephone">
+						</div>		
+					</div>
+
+					    
+                   <button  ng-click="saveFournisseur()"  id="button" type="button" class="btn btn-info pull-right">Valider</button>				
+					 
+			</form> 
+
+		</div>		    	 	     
+</div>
+</div>	
+
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/style.css">
+		<title>Message</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row profile">
+				<div class="col-md-3">
+					<div class="profile-sidebar">
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle">
+							<div align="center">
+								<img src="../images/user.png" class="img-responsive img-circle" alt="user" style="width:50%	">
+							</div>
+							<div class="profile-usertitle-name">
+								Nom
+							</div>
+							<div class="profile-usertitle-job">
+								Prénom
+							</div>
+						</div>
+						<!-- END SIDEBAR USER TITLE -->
+						<!-- SIDEBAR BUTTONS -->
+						<div class="profile-userbuttons">
+							<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Editer le profil</button>
+							<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Messages</button>
+						</div>
+						<!-- END SIDEBAR BUTTONS -->
+						<!-- SIDEBAR MENU -->
+						<div class="profile-usermenu">
+							<ul class="nav">
+								<li >
+									<a href="profil.html">
+									<i class="glyphicon glyphicon-user"></i>
+									Mon Profil </a>
+								</li>
+								<li class="active">
+									<a href="messages.html">
+									<i class="glyphicon glyphicon-envelope"></i>
+									Messages </a>
+								</li>
+								<li>
+									<a href="paiement.html">
+									<i class="glyphicon glyphicon-euro"></i>
+									Paiement </a>
+								</li>
+								<li >
+									<a href="absence.html">
+									<i class="glyphicon glyphicon-time"></i>
+									Absence </a>
+								</li>
+								<li>
+									<a href="consultation.html">
+									<i class="glyphicon glyphicon-stats"></i>
+									Consultation de notes </a>
+								</li>
+
+								<li>
+									<a href="emploi.html">
+									<i class="glyphicon glyphicon-calendar"></i>
+									Emploi du temps </a>
+								</li>
+
+								<li>
+									<a href="devoirs.html">
+									<i class="glyphicon glyphicon-book"></i>
+									Devoirs </a>
+								</li>
+
+								<li>
+									<a href="controle.html">
+									<i class="glyphicon glyphicon-education"></i>
+									Controle </a>
+								</li>
+
+							</ul>
+						</div>
+						<!-- END MENU -->
+					</div>
+				</div>
+			
+				<div class="col-md-9" style="background-color: white">
+					<div ng-app="myApp">
+						<div ng-controller="listeinscriptions">
+							<h3 class="well">Messages</h3>
+							<div class="row">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<div class="table-container">
+											<table class="table table-filter">
+												<tbody>
+													<tr>
+														<td>
+															<div class="media">
+																	<img src="../images/user.png" class="center img-responsive img-circle pull-left" alt="user" style="width:10%">
+																	<p>{personne.nom}</p>
+																<div class="media-body">
+																	<span class="media-meta pull-right">6 Avril, 2018</span>
+																		<h4 class="title">
+																			Lorem Impsum
+																		</h4>
+																		<p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+																		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+																		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+																		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+																		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+																		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>	
+							</div>
+							<div class="row">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<div class="table-container">
+											<table class="table table-filter">
+												<tbody>
+													<tr>
+														<td>
+															<div class="media">
+																	<img src="../images/user.png" class="center img-responsive img-circle pull-left" alt="user" style="width:10%">
+																	<p>{personne.nom}</p>
+																<div class="media-body">
+																	<span class="media-meta pull-right">6 Avril, 2018</span>
+																		<h4 class="title">
+																			Lorem Impsum
+																		</h4>
+																		<p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+																		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+																		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+																		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+																		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+																		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+</html>

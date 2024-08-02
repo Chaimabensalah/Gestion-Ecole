@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<title>
+
+</title>
+
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+     <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<div class="profile-userpic">
+				</div>
+				
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+					
+				</div>
+				
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				
+				<div class="profile-usermenu">
+					<ul class="nav">
+					
+				    	<li >
+							<a ui-sref="gestionnaireHome">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+						<li >
+							<a ui-sref="garde">
+							<i class="glyphicon glyphicon-stats"></i>
+						     garde</a>
+						</li>
+						
+						<li>
+							<a ui-sref="transport">
+							<i class="glyphicon glyphicon-stats"></i>
+							transport</a>
+						</li>
+						
+						
+						<li class="active">
+							<a ui-sref="vehicules">
+							<i class="glyphicon glyphicon-stats"></i>
+							vehicules</a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+
+</div>
+ 
+
+		<div class="col-md-9" style="background-color: white">
+           <h3 class="well"  >liste des vehicules</h3> 
+        
+        <table class="table table-striped">
+					<thead>
+						<tr>
+						    <th>Ref</th>
+						    <th>Marque</th>
+							<th>Matricule</th>
+							<th>Modele</th>
+							<th>Date d'achat</th>
+							 
+						</tr>
+					</thead>
+						    
+					<tbody>
+						    <tr ng-repeat="v in voituresList" >
+						   		<td>{{v.idVehicule}}</td>
+						   	    <td>{{v.marque}}</td>
+								<td>{{v.matricule}}</td>
+								<td>{{v.modele}}</td>
+							    <td>{{v.dateDachat}}</td>
+								 <td> <a ng-click='recupererVoiture(v.idVehicule)' data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                                <td><a  ng-click="deleteVehicule(v.idVehicule,activeJob);" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> </td>
+					        
+							 
+					        </tr>
+					        
+					        
+					</tbody>
+				</table>
+				<hr>
+				
+        <h3 class="well" id="titre" >Ajout d'un vehicules</h3>
+
+ 		<div class="tab-content" >
+		    <div id="home" class="tab-pane fade in active">
+		      <form name="myForm">
+					<hr>
+					
+					<div class="row">
+						<div class="col-sm-6 form-group">
+						<label>matricule</label>
+						<input type="text" ng-model="vehicule.matricule" placeholder="Entrer le matricule" class="form-control" name="nom" id="nom" >
+						</div>
+						<div class="col-sm-6 form-group">
+						<label>modele</label>
+						<input type="text" ng-model="vehicule.modele" placeholder="Entrer le modele.." class="form-control" name="prenom" id="prenom">
+						</div>
+					
+           			</div>
+
+					<div class="row">
+						<div class="col-sm-6 form-group">
+                        <label>marque</label>
+						<select  ng-model="vehicule.marque" ng-value="vehicule.marque" id="ville" name="ville" class="form-control">
+						<option value="" label="--- Selectionner la marque ---"/>
+						<option value="Afghanistan" label="Afghanistan"/>
+						<option value="Algeria" label="Algeria"/>
+						<option value="Andorra" label="Andorra"/>
+						<option value="Angola" label="Angola"/>
+						<option value="Argentina" label="Argentina"/>
+						<option value="Australia" label="Australia"/>
+						<option value="Bahrain" label="Bahrain"/>
+						<option value="Bangladesh" label="Bangladesh"/>
+						</select>
+						</div> 
+						
+
+			        	<div class="col-sm-6 form-group">
+						<label>date dachat</label>
+						<input type="Date" ng-model="vehicule.dateDachat"   placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+					    </div>
+
+				 	</div>	
+					
+						 
+					    
+              <button  ng-click="saveVehicule()" id="button" type="button" class="btn btn-info pull-right">Valider</button>				
+					 
+			</form> 
+
+		</div>		    	 	     
+</div>
+</div>	
+</div>
+
+
+</div>
+</body>
+</html>
